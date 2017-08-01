@@ -1,0 +1,6 @@
+{
+  "name": "Lunch Train Bot",
+  "description": "Lunch Train Bot",
+  "repository": "https://slack-github.com/saurabh/LunchTrain",
+  "addons": ["cleardb:ignite"]
+}

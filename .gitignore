@@ -1,0 +1,3 @@
+.DS_Store
+.idea/include/config.php
+include/db_config.php
