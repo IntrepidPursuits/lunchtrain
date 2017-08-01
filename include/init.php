@@ -27,7 +27,10 @@
 	$GLOBALS['token'] = Array();
 
     require "lib_db.php"; // MySQL DB helpers
-    require "db_config.php"; // MySQL DB configs
+
+    // OAuth install URL
+    $auth_scopes = Array();
+    $GLOBALS['oauth_url'] = $GLOBALS['base_auth_url']."?scope=".join(",", $auth_scopes)."&client_id=".$GLOBALS['client_id'];
 
     // LunchTrain onboarding DM content
     $GLOBALS['install_message'] = array(
