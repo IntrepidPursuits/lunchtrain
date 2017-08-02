@@ -4,7 +4,16 @@
 
 	header('Content-Type: application/json');
 
-	$payload = json_decode($_POST['payload'], true);
+    $payload = json_decode($_POST['payload'], true);
+
+    // Slack verification token
+    $token = $payload['token'];
+    if($token != $GLOBALS['slack_verification_token']){
+        header('HTTP/1.0 403 Forbidden');
+        echo 'You are forbidden!';
+        exit;
+    }
+
 	$id = $payload['callback_id'];
 	$user = $payload['user'];
 	$team_domain = $payload['team']['domain'];

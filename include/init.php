@@ -11,20 +11,8 @@
     ini_set('log_errors', 1);
     ini_set('error_log', '/var/log/apache2/error.log');
 
-	$token = "";
-
     // Break the request URI up for parsing
 	$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-
-    // Slack verification token
-	if (isset($_POST['token'])){
-		$token = $_POST['token'];
-	}else{
-		$payload = json_decode($_POST['payload'], true);
-		$token = $payload['token'];
-	}
-
-	$GLOBALS['token'] = Array();
 
     require "lib_db.php"; // MySQL DB helpers
 

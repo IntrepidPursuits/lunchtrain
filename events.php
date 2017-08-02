@@ -10,6 +10,16 @@
         print($postjson["challenge"]);
     }
 
+    // Slack verification token
+    $payload = json_decode($_POST['payload'], true);
+    $token = $payload['token'];
+
+    if($token != $GLOBALS['slack_verification_token']){
+        header('HTTP/1.0 403 Forbidden');
+        echo 'You are forbidden!';
+        exit;
+    }
+
     $event_data = $postjson['event'];
     $event_type = $event_data['type'];
 
