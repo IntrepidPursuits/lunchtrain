@@ -7,7 +7,8 @@
     $installed = 0;
 	$error = 0;
 
-    if ($code = $_GET['code']){
+    if (isset($_GET['code'])){
+        $code = $_GET['code'];
         $url=$GLOBALS['base_api_url']."oauth.token?client_id=".$GLOBALS['client_id']."&client_secret=".$GLOBALS['client_secret']."&code=$code&redirect_uri=$current_url";
         $response = curl_get($url);
         if ($response){

@@ -1,6 +1,7 @@
 <?php
     require "config.php";
-	require "lib_message.php"; // Slack message construction helpers
+    require "lib_db.php"; // MySQL DB helpers
+    require "lib_message.php"; // Slack message construction helpers
 	require "lib_slack.php"; // Slack helpers
 	require "lib_curl.php"; // Wrappers for API calls via cURL
 	require "lib_app_installs.php"; // Helpers for the app_installs db
@@ -14,7 +15,6 @@
     // Break the request URI up for parsing
 	$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 
-    require "lib_db.php"; // MySQL DB helpers
 
     // OAuth install URL
     $auth_scopes = Array();
