@@ -7,7 +7,6 @@
 */
 
     require "include/init.php";
-    $_POST['token'] = $GLOBALS['slack_verification_token'];
 
 	$ids = get_trains_for_2min_warn();
 	if (!$ids){
