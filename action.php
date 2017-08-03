@@ -46,11 +46,8 @@
 
                 if($ret_arr["ok"] == true){
                     $install_info = app_installs_get($team_id);
-                    $dm_id = $install_info["installer_dm_id"];
+                    $dm_id = $install_info["installer_dm_channel_id"];
                     $message_ts = $install_info["install_message_ts"];
-
-                    $message = Array( "text" => "Saving...");
-                    slack_chat_update_message($team_id, $dm_id, $message, $message_ts);
                 }
             }
             exit();
@@ -86,7 +83,8 @@
 			date_default_timezone_set($args['timezone']);
 
 			$train = start_new_train($args);
-			if (!$train['ok']){
+
+            if (!$train['ok']){
 				message_ephemeral("Cannot start new train. Error: ". $train['error']);
 				exit(1);
 			}
@@ -97,7 +95,7 @@
 			$ret = slack_chat_post_message($team_id, $channel_id, $message);
 			$ret_arr = json_decode($ret, true);
 
-			if (!$ret_arr['ok']){
+            if (!$ret_arr['ok']){
 				if ($ret_arr['error']=='channel_not_found'){
 					message_ephemeral("Lunch Train is not authorized to start a train in this channel. Try `/lunchtrain` in another public channel.");
 				}else{

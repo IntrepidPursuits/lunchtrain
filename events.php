@@ -6,13 +6,13 @@
     $postjson = json_decode($postdata,true);
 
     // Echo challenge token back to Slack for Request URL validation
-    if ($postjson["challenge"]){
-        print($postjson["challenge"]);
+    if (isset($postjson["challenge"])){
+        echo $postjson["challenge"];
+        exit;
     }
 
     // Slack verification token
-    $payload = json_decode($_POST['payload'], true);
-    $token = $payload['token'];
+    $token = $postjson['token'];
 
     if($token != $GLOBALS['slack_verification_token']){
         header('HTTP/1.0 403 Forbidden');
