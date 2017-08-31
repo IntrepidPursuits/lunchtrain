@@ -89,9 +89,13 @@
 				exit(1);
 			}
 
+			echo "Train created in database successfully";
+
 			$train_id = $train['id'];
 
 			$message = message_channel($train_id, $destination, $time, $creator_id, $args['train_type']);
+			echo "Message to be sent: " + $message;
+
 			$ret = slack_chat_post_message($team_id, $channel_id, $message);
 			$ret_arr = json_decode($ret, true);
 

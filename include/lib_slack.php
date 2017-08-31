@@ -4,6 +4,7 @@
 		$ret = app_installs_get($team_id);
 
 		if ($ret['ok']){
+			echo "App installs get went OK";
 			$token = $ret['token'];
 		}
 
@@ -20,6 +21,10 @@
 			);
 
 		$ret= curl_post($url, $post);
+
+		if ($ret['ok']){
+			echo "Curl post went OK";
+		}
 
 		return $ret;
 	}
