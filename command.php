@@ -34,7 +34,7 @@
 
 	if ($destination == 'view all') {
 		$train_msg = 'Check out these trains before they leave the station!' . "\r\n";
-		$train_ids = get_all_train_ids();
+		$train_ids = get_joinable_train_ids();
 		error_log('All train ids count = '.count($train_ids).' train ids are: '.$train_ids);
 		if (count($train_ids) == 0) {
 			error_log('There are no train ids :(');
@@ -46,7 +46,7 @@
 				$ret = get_train_by_id($id);
 				$train = $ret['train'];
 				error_log('Train destination is: '.$train['destination']);
-				$train_destination = 'To ' . $train['destination'] . ' at ' . $train['date_leaving'] . "\r\n";
+				$train_destination = 'To ' . $train['destination'] . ' at ' . getInformalTime($train['date_leaving']) . "\r\n";
 				$train_msg .= $train_destination;
 				error_log('Train message = '.$train_msg);
 			}
