@@ -6,6 +6,7 @@
 		if ($ret['ok']){
 			error_log("App installs get went OK");
 			$token = $ret['token'];
+			error_log($token);
 		}
 
 		$url = $GLOBALS['base_api_url']."chat.postMessage";

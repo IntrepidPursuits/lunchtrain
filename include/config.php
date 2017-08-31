@@ -6,6 +6,7 @@
 
     // Slack app credentials and db configs are loaded from environmental variables
     $GLOBALS['client_id'] = getenv('SLACK_CLIENT_ID');
+    error_log(getenv('SLACK_CLIENT_ID'));
     $GLOBALS['client_secret'] = getenv('SLACK_CLIENT_SECRET');
     $GLOBALS['slack_verification_token'] = getenv('SLACK_VERIFICATION_TOKEN');
 
@@ -13,4 +14,3 @@
     $GLOBALS['db_user'] = getenv('LUNCHTRAIN_DB_USER');
     $GLOBALS['db_password'] = getenv('LUNCHTRAIN_DB_PASSWORD');
     $GLOBALS['db_name'] = getenv('LUNCHTRAIN_DB_NAME');
-
