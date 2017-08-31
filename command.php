@@ -24,14 +24,34 @@
 
 	if ($destination == 'help'){
 		$message = array(
-			"text" => 'Typing `/lunchtrain [optional place or food genre] [at optional time]` will start a lunch train. ',
+			"text" => 'Typing `/lunchtrain [optional place or food genre] [at optional time]` will start a lunch train.
+			Typing `/lunchtrain view all` will show a list of all active lunch trains',
 			);
 
 		print json_encode($message);
 		exit;
 	}
 
+	if ($destination == 'view all') {
+		$train_msg = 'Check out these trains before they leave the station!' . "\r\n";
+		$train_ids = get_all_train_ids();
+		if (count($train_ids) == 0) {
+			$train_msg = 'Chew Hoo! There are no lunch trains yet. You should make one!';
+		} else {
+			foreach ($ids as $id) {
+				$ret = get_train_by_id($id);
+				$train = $ret['train'];
+				$train_destination = 'To ' . $train['destination'] . ' at ' . $train['date_leaving'] . "\r\n";
+				$train_msg .= $train_destination;
+			}
+		}
+		$message = array(
+			"text" => $train_msg,
+		);
 
+		print json_encode($message);
+		exit;
+	}
 
 	$timezone = slack_get_user_timezone($team_id, $creator_id);
 

@@ -353,6 +353,12 @@
 		return $ret;
 	}
 
+	function get_all_train_ids() {
+		$query = "SELECT * FROM lunch_trains";
+		$ret = db_fetch_row_ids($query);
+		return $ret;
+	}
+
 	function get_trains_that_are_leaving(){
 		$time = time();
 		$query = "SELECT * FROM lunch_trains WHERE date_cancelled=0 and warning_sent = 1 and date_leaving >= $time - 1500   and date_leaving <= $time - 120";
