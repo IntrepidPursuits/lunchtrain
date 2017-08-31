@@ -19,7 +19,7 @@ CREATE TABLE `app_installs` (
 
 
 function app_installs_add($team_id, $user_id, $installer_dm_channel_id, $install_message_ts, $team_name, $token){
-  echo "Adding to app installs database";
+  print "Adding to app installs database";
 
     $query = "REPLACE INTO `app_installs` ( `team_id`, `user_id`, `installer_dm_channel_id`, `install_message_ts`,`team_name`, `token`) values (";
 	$query .= db_safe_sql_param($team_id, true) . ", ";
@@ -41,7 +41,7 @@ function app_installs_add($team_id, $user_id, $installer_dm_channel_id, $install
 
 
 function app_installs_get($team_id, $user_id = 0){
-  echo "Fetching app installs database";
+  print "Fetching app installs database";
 
 	$query = "SELECT * FROM app_installs WHERE `team_id` = '$team_id' and active = 1 order by updated_at desc";
 	$ret = db_fetch_single_row($query);
