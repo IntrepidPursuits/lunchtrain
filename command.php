@@ -21,6 +21,32 @@
 	$creator_id = $_POST['user_id'];
 	$creator_name = $_POST['user_name'];
 
+	if (substr($destination, 0, 5) =="join "){
+		$id = substr($destination, 5);
+
+		$ret = get_train_by_id($id);
+		if ($ret['ok']) $train = $ret['train'];
+
+		$ret = join_train($id, $creator_id, $creator_name);
+
+		if (!$ret['ok']){
+			message_ephemeral($ret['error']);
+		} else {
+			$train = $ret['train'];
+		}
+
+		$payload = json_decode($train['payload'], true);
+		$participants = $payload['participants'];
+
+		$msg = message_participant($id, $train['destination'], $train['date_leaving'],$train['creator_id']);
+
+		message_ephemeral("",$msg['attachments']);
+
+		$message = message_channel($id, $train['destination'], $train['date_leaving'], $train['creator_id'], $train['train_type'], $participants);
+		slack_chat_update_message($team_id, $train['channel_id'], $message, $train['channel_message_ts']);
+
+		exit;
+	}
 
 	if ($destination == 'help'){
 		$message = array(
