@@ -98,7 +98,7 @@
 			$ret = slack_chat_post_message($team_id, $channel_id, $message);
 			$ret_arr = json_decode($ret, true);
 
-			error_log($ret_arr);
+			error_log($ret_arr['error']);
 
             if (!$ret_arr['ok']){
 				if ($ret_arr['error']=='channel_not_found'){
