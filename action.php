@@ -89,7 +89,7 @@
 				exit(1);
 			}
 
-			print "Train created in database successfully";
+			error_log("Train created in database successfully");
 
 			$train_id = $train['id'];
 
