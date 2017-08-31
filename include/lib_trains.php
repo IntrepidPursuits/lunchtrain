@@ -354,7 +354,7 @@
 	}
 
 	function get_joinable_train_ids() {
-		$time = time() + (3600 * 3);
+		$time = time() + 10800;
 		error_log('The current time is '.getInformalTime($time));
 		$query = "SELECT * FROM lunch_trains WHERE date_leaving >= $time";
 		$ret = db_fetch_row_ids($query);
