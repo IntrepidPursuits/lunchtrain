@@ -46,6 +46,7 @@
 				$ret = get_train_by_id($id);
 				$train = $ret['train'];
 				error_log('Train destination is: '.$train['destination']);
+				error_log('Train departure time is: '.getInformalTime($train['date_leaving']));
 				$train_destination = 'To ' . $train['destination'] . ' at ' . getInformalTime($train['date_leaving']) . "\r\n";
 				$train_msg .= $train_destination;
 				error_log('Train message = '.$train_msg);
