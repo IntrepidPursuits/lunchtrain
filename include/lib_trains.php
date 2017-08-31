@@ -355,7 +355,7 @@
 
 	function get_joinable_train_ids() {
 		$time = time();
-		$query = "SELECT * FROM lunch_trains WHERE date_leaving >= $time + 10800";
+		$query = "SELECT * FROM lunch_trains WHERE date_leaving >= $time";
 		$ret = db_fetch_row_ids($query);
 		return $ret;
 	}
