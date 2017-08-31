@@ -41,7 +41,7 @@
 			$train_msg = 'Chew Hoo! There are no lunch trains yet. You should make one!';
 		} else {
 			error_log('There are train ids!');
-			foreach ($ids as $id) {
+			foreach ($train_ids as $id) {
 				error_log('Looking at train id -> '.$id);
 				$ret = get_train_by_id($id);
 				$train = $ret['train'];
