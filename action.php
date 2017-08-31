@@ -98,6 +98,8 @@
 			$ret = slack_chat_post_message($team_id, $channel_id, $message);
 			$ret_arr = json_decode($ret, true);
 
+			error_log($ret_arr);
+
             if (!$ret_arr['ok']){
 				if ($ret_arr['error']=='channel_not_found'){
 					message_ephemeral("Lunch Train is not authorized to start a train in this channel. Try `/lunchtrain` in another public channel.");

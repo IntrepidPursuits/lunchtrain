@@ -22,10 +22,6 @@
 
 		$ret= curl_post($url, $post);
 
-		if ($ret['ok']){
-			error_log("Curl post went OK");
-		}
-
 		return $ret;
 	}
 
